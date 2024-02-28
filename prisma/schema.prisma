@@ -13,3 +13,12 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model SpotifyIntegration {
+   id String @id @default(uuid())
+   token String
+   refreshToken String
+   expiresIn Int
+   createdAt DateTime @default(now())
+}
+
