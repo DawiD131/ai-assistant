@@ -6,6 +6,8 @@ import { SpotifyIntegrationController } from './spotify-integration/spotify-inte
 import { SpotifyIntegrationService } from './spotify-integration/spotify-integration.service';
 import { SpotifyIntegrationAuthService } from './spotify-integration/spotify-integration-auth.service';
 import { ConfigModule } from '@nestjs/config';
+import { EntryModule } from './entry/entry.module';
+import { OpenaiService } from './openai.service';
 
 @Module({
   imports: [
@@ -15,10 +17,12 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
       envFilePath: '../.env',
     }),
+    EntryModule,
   ],
   controllers: [SpotifyIntegrationController],
   providers: [
     PrismaService,
+    OpenaiService,
     SpotifyIntegrationService,
     SpotifyIntegrationAuthService,
   ],
